@@ -1,0 +1,43 @@
+@using DarenTechs.UI.Components.Modal
+@using DarenTechs.UI.ViewComponents
+@model BootstrapModal
+
+<div id="@Model.Id" class="modal fade hidden-print" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" on-content-loaded="true">
+    $(function () {
+            // boostrap 4 load modal example from docs
+            $('#@Model.Id').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget); // Button that triggered the modal
+                var url = button.attr("href");
+                var dataModel = @Json.Serialize(Model);
+                var data = 'bootstrapmodal=' + JSON.stringify(dataModel);
+                var modal = $(this);
+                // note that this will replace the content of modal-content ever time the modal is opened
+                modal.find('.modal-content').load(url, data);
+        });
+        });
+</script>
+
+<script type="text/javascript" on-content-loaded="true">
+
+    $('#@Model.Id').on('shown.bs.modal', function (e) {
+        
+        $('#footer-btn-save').on("click", function (e) {
+            e.preventDefault();
+            // prevent de default action, which is to submit
+            alert("clicked 4");
+
+        });     
+
+        $('#footer-btn-save').Ready(
+            function () {});
+    });
+
+</script>
+

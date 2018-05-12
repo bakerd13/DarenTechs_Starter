@@ -1,0 +1,124 @@
+@using DarenTechs.UI.Components.Modal
+
+<div class="container-fluid w-100 h-100">
+    <div class="row w-100 h-75">
+        <div class="col-6">
+
+            <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    @{
+                        BootstrapModal bootstrapmodal = new BootstrapModal { Id = "modal-paragraph", Footer = new ModalFooter { SaveButtonType = SaveButtonTypeModel.Button, SaveButtonText = "Test" } };
+
+                        <a class="btn btn-secondary" asp-controller="BlogAdmin" asp-action="AddParagraph" data-toggle="modal" data-target="#modal-paragraph">Paragraph</a>
+                        <vc:generic-modal bootstrap-modal="@bootstrapmodal"></vc:generic-modal>
+                    }
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Heading
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="btnHeadingGroupDrop">
+                            <a class="dropdown-item" href="#">Heading 1</a>
+                            <a class="dropdown-item" href="#">Heading 3</a>
+                            <a class="dropdown-item" href="#">Heading 4</a>
+                            <a class="dropdown-item" href="#">Heading 5</a>
+                            <a class="dropdown-item" href="#">Heading 6</a>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary">Img</button>
+                    <button type="button" class="btn btn-secondary">Code</button>
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Template
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="btnTemplateGroupDrop">
+                            <a class="dropdown-item" href="#">Template 1</a>
+                            <a class="dropdown-item" href="#">Template 2</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="btn-group mr-2" role="group" aria-label="Second group">
+                    <button type="button" class="btn btn-secondary">bold</button>
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Font
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="btnFontGroupDrop">
+                            <a class="dropdown-item" href="#">Italic</a>
+                            <a class="dropdown-item" href="#">Font 3</a>
+                            <a class="dropdown-item" href="#">Font 4</a>
+                            <a class="dropdown-item" href="#">Font 5</a>
+                            <a class="dropdown-item" href="#">Font 6</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group mr-2" role="group" aria-label="Third group">
+                    <button type="button" class="btn btn-secondary">Delete</button>
+                    <button type="button" class="btn btn-secondary">Undo</button>
+
+                </div>
+            </div>
+
+            <textarea id="designer_pad" class="h-75 w-100" data-bind="textInput: someDesign" onmouseup="GetDesignerSelectedText()" readonly></textarea>
+
+        </div>
+
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">View</div>
+                <div id="designer_view" class="card-body">
+                    <span data-bind="html: someDesign"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row w-100 h-25">
+        <div class="col-6">
+            <textarea id="designer_pad_text" class="h-75 w-75" data-bind="textInput: someDesign"></textarea>
+        </div>
+        <div class="col-6">
+            <textarea id="designer_pad_selectedtext" class="h-75 w-75"></textarea>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script type="text/javascript">
+        function ViewModel() {
+            this.someDesign = ko.observable('');
+        };
+
+        var vm = new ViewModel();
+        ko.applyBindings(vm);
+    </script>
+
+    <script>
+
+    </script>
+    <script type="text/javascript">
+
+        function GetDesignerSelectedText() {
+
+            var textComponent = document.getElementById('designer_pad');
+
+            var selectedText;
+            // IE version
+            if (document.selection != undefined) {
+                textComponent.focus();
+                var sel = document.selection.createRange();
+                selectedText = sel.text;
+            }
+            // Mozilla version
+            else if (textComponent.selectionStart != undefined) {
+                var startPos = textComponent.selectionStart;
+                var endPos = textComponent.selectionEnd;
+                selectedText = textComponent.value.substring(startPos, endPos)
+            }
+
+            //alert("You selected: " + selectedText);
+            $('#designer_pad_selectedtext').val(selectedText);
+        }
+    </script>
+}

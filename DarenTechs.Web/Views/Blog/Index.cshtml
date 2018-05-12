@@ -1,0 +1,44 @@
+@using DarenTechs.UI.ViewModels
+@using System.Globalization
+@model BlogViewModel
+@{
+    Layout = "_BlogLayout";
+}
+
+<div class="card h-100 m-1 border">
+    <div class="card-header">
+        Published Date: @Model.DatePublished.ToString("f", CultureInfo.InvariantCulture)
+    </div>
+    <div class="card-body">
+        @Model.HTMLBody
+    </div>
+    <div class="card-footer bg-transparent p-0 m-0 border-0">
+        <div class="card h-100 p-0 m-0 border-0">
+            <div class="card-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="card-text text-left m-0 p-0"><a data-toggle="collapse" href="#CommentsCollapseMain" role="button" aria-expanded="false" aria-controls="Comments">Comments (@Model.Comments.Count())</a></p>
+                        </div>
+                        <div class="col-6">
+                            <p class="card-text text-right m-0 p-0"><a data-toggle="collapse" href="#CommentsCollapseAdd" role="button" aria-expanded="false" aria-controls="AddComments">Add Comment</a> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="collapse multi-collapse" id="CommentsCollapseMain">
+                <div class="card-body h-100 p-0 m-0 border-0">
+                    @Html.Partial("_Comments", Model)
+                </div>
+            </div>
+            <div class="collapse multi-collapse" id="CommentsCollapseAdd">
+                <div class="card-body h-100 p-0 m-0 border-0">
+                    @Html.Partial("_CommentsAdd", new BlogCommentViewModel { PostId = Model.Id})
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

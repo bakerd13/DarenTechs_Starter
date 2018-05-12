@@ -1,0 +1,11 @@
+@using DarenTechs.Blog.ViewComponents
+@model DarenTechs.Blog.ViewModels.BlogTagsViewModel
+
+@foreach (var t in Model.Tags)
+{
+    <a class="m-0 pr-1" href="/Tag/@t.Slug">@t.Name</a>
+}
+
+
+
+

@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>aspnet-DarenTechs.Web-6BA6BFC1-EC47-4763-9BAD-2F34648D516F</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="knockoutjs" Version="3.4.2" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" PrivateAssets="All" />
+    <PackageReference Include="React.AspNet" Version="3.3.0" />
+    <PackageReference Include="React.Core" Version="3.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DarenTechs.Data\DarenTechs.Data.csproj" />
+    <ProjectReference Include="..\DarenTechs.Infrastructure\DarenTechs.Infrastructure.csproj" />
+    <ProjectReference Include="..\DarenTechs.Blog\DarenTechs.Blog.csproj" />
+    <ProjectReference Include="..\DarenTechs.UI\DarenTechs.UI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+    <Folder Include="Views\ApplicationRole\" />
+    <Folder Include="Views\User\" />
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="&#xD;&#xA;" />
+  </Target>
+
+</Project>

@@ -1,0 +1,16 @@
+﻿@model UserRoleViewModel
+@using DarenTechs.Web.Models
+
+<form asp-controller="User" asp-action="DeleteUserRoleFinish" method="post">
+    <modal-header model-heading="Delete User Role"></modal-header>
+    <div class="modal-body form-horizontal">
+        Are you want to delete @Model.RoleName ?
+    </div>
+    <input asp-for="@Model.UserId" />
+    <input asp-for="@Model.RoleName" />
+    @{
+        var footer = new ModalFooter { SubmitButtonText = "Delete" };
+        <modal-footer modal-footer-buttons="@footer"></modal-footer>
+    }
+</form>
+

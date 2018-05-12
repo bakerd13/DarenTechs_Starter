@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Blog\Components\BlogCategories\" />
+    <Folder Include="Views\Blog\Components\BlogTags\" />
+    <Folder Include="Views\Shared\" />
+  </ItemGroup>
+
+<ItemGroup>
+    <PackageReference Include="bootstrap" Version="4.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Razor.Runtime">
+      <HintPath>..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.razor.runtime\2.0.1\lib\netstandard2.0\Microsoft.AspNetCore.Razor.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Views\**\*.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DarenTechs.Data\DarenTechs.Data.csproj" />
+    <ProjectReference Include="..\DarenTechs.Infrastructure\DarenTechs.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

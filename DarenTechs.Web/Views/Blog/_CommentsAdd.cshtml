@@ -1,0 +1,16 @@
+﻿@using DarenTechs.UI.ViewModels
+@model BlogCommentViewModel
+
+    <form asp-controller="Blog" asp-action="AddComment" method="post">
+        <div class="card w-100">
+            <div class="card-body">
+                <textarea class="w-100 h-25" id="comment" asp-for="Body"></textarea>
+            </div>
+            <div class="card-body">
+                <input type="text" name="Author" value="" asp-for="AuthorName" />
+            </div>
+            <div class="card-footer">
+                <p class="card-text text-left m-0 p-0"><button class="btn btn-primary" role="button" aria-expanded="false" aria-controls="Publish">Publish</button></p>
+            </div>
+        </div>
+    </form>

@@ -1,0 +1,14 @@
+﻿@model string
+@using DarenTechs.Web.Models
+
+<form asp-action="DeleteUserRole" role="form">
+    <modal-header model-heading="Delete user Role"></modal-header>
+    <div class="modal-body form-horizontal">
+        Are you want to delete @Model?
+    </div>
+    @{
+        var footer = new ModalFooter { SubmitButtonText = "Delete" };
+        <modal-footer modal-footer-buttons="@footer"></modal-footer>
+    }
+</form>
+

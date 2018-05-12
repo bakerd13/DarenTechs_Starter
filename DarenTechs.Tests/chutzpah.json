@@ -1,0 +1,5 @@
+{
+  "Framework": "jasmine",
+  "References": [ { "Path": "../DarenTechsPlayArea.Web/wwwroot/js/DarenTechs.js" } ],
+  "Tests": [ {"Path": "JavascriptTests"} ]
+}

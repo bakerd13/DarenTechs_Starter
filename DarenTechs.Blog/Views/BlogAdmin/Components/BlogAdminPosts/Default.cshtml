@@ -1,0 +1,41 @@
+﻿@using DarenTechs.Blog.ViewComponents
+@model DarenTechs.Blog.ViewModels.BlogAdminPostsViewModel
+
+@{
+    var paginationType = Model.IsPublished ? "Published" : "Drafts";
+}
+<div class="clearfix"></div>
+<div class="container-fluid">
+    <nav id="pagination-@paginationType" class="fixed-bottom" aria-label="...">
+    </nav>
+
+    <div id="page-content-@paginationType" class="page-content"></div>
+</div>
+
+<script type="text/javascript" on-content-loaded="true">
+    $('#pagination-@paginationType').bootpag({
+            total: 50,
+            page: 1,
+            maxVisible: 5,
+            leaps: true,
+            firstLastUse: true,
+            first: 'First',
+            last: 'Last',
+            wrapClass: 'pagination',
+            activeClass: 'active',
+            disabledClass: 'disabled',
+            nextClass: 'page-item next',
+            prevClass: 'page-item prev',
+            lastClass: 'page-item last',
+            firstClass: 'page-item first',
+            itemClass: 'page-item',
+            linkClass: 'page-link'
+        }).on("page", function (event, num) {
+            $("#page-content-@paginationType").html("Page " + num); // or some ajax content loading...
+        });
+</script>
+
+
+
+
+

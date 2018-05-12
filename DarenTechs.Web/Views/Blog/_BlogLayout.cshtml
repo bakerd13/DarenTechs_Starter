@@ -1,0 +1,46 @@
+@{
+    Layout = "_Layout";
+}
+
+<div class="container-fluid h-100 d-flex flex-column">
+    <div class="row h-100 m-2">
+
+        <div class="col-9 h-100 border-right">
+
+            @RenderBody()
+
+        </div>
+
+        <div class="col-3 h-100">
+
+                <div class="card h-50 m-1 rounded border">
+                    <div class="card-header">
+                        Archives
+                    </div>
+                    <div class="card-body">
+                        <vc:blog-navigation></vc:blog-navigation>
+                    </div>
+                </div>
+
+                <div class="card h-25 m-1 rounded  border">
+                    <div class="card-header">
+                        Categories
+                    </div>
+                    <div class="card-body m-0 p-0 border-0">
+                        <vc:blog-categories></vc:blog-categories>
+                    </div>
+                </div>
+
+                <div class="card mh-100 m-1 rounded  border">
+                    <div class="card-header">
+                        Tags
+                    </div>
+                    <div class="card-body m-0 p-0 border-0">
+                        <vc:blog-tags></vc:blog-tags>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+</div>
+

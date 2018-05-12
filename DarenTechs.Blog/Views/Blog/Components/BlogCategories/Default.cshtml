@@ -1,0 +1,15 @@
+@using DarenTechs.Blog.ViewComponents
+@model DarenTechs.Blog.ViewModels.BlogCategoriesViewModel
+
+<ul class="list-group m-0 p-1 border-0">
+    @foreach (var c in Model.Categories)
+    {
+        <li class="list-group-item m-0 p-1 border-0">
+            <a href="/Category/@c.Slug">@c.Name</a>
+        </li>
+    }
+</ul>
+
+
+
+

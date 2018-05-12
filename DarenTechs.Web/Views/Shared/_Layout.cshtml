@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="A Site of technical knowledge and fun" />
+    <meta name="keywords" content="Asp.net Core" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DarenTechs WebSite</title>
+
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+
+
+</head>
+<body>
+    <div class="container-fluid" id="logo_banner">
+        <div class="row">
+            <div id="logo">
+                <div id="logo_text">
+                    <h1><a href="/home">Daren<span class="logo_colour">Techs</span></a></h1>
+                    <h2>A place for learning and interest.</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topnavbar" aria-controls="topnavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="topnavbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+
+
+
+                <environment include="Development">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Blog" asp-action="Index">Main Blog</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="BlogAdmin" asp-action="Index">Blog Aministration</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="BlogAdmin" asp-action="Designer">Blog Creator</a></li>
+                        </ul>
+                    </li>
+                </environment>
+                <environment exclude="Development">
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Blog" asp-action="Index">Main Blog</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="BlogCreator" asp-action="Index">Blog Creator</a></li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Blog" asp-action="Index">Blog</a></li>
+                    }
+                </environment>
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                <environment include="Development">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrator</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="ApplicationRole" asp-action="Index">Role</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="User" asp-action="Index">User</a></li>
+                        </ul>
+                    </li>
+                </environment>
+                <environment exclude="Development">
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrator</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="ApplicationRole" asp-action="Index">Role</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="User" asp-action="Index">User</a></li>
+                            </ul>
+                        </li>
+                    }
+                </environment>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            @await Html.PartialAsync("_LoginPartial")
+        </div>
+    </nav>
+
+    @RenderBody()
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/popper/dist/popper.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="~/js/knockout-3.4.2.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/jquery.bootpag.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
