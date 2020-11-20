@@ -1,11 +1,9 @@
 using DarenTechs.Data.Data;
 using DarenTechs.Data.Entities.Blog;
-using Microsoft.Data.Sqlite;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Xunit;
 
 namespace DarenTechsPlayArea.Tests.DatabaseTests
@@ -13,8 +11,6 @@ namespace DarenTechsPlayArea.Tests.DatabaseTests
     public class BlogContextTests
     {
         private readonly Post SinglePost;
-        private readonly Comment SingleComment;
-
 
         public BlogContextTests()
         {
@@ -24,13 +20,13 @@ namespace DarenTechsPlayArea.Tests.DatabaseTests
         [Fact]
         public void Add_A_Single_Post()
         {
-            var connection = new SqliteConnection("DataSource=:memory:");
+            var connection = new SqlConnection("DataSource=:memory:");
             connection.Open();
 
             try
             {
                 var options = new DbContextOptionsBuilder<DarenTechsContext>()
-                    .UseSqlite(connection)
+                    .UseSqlServer(connection)
                     .Options;
 
                 // Create the schema in the database

@@ -3,13 +3,13 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using DarenTechs.Web.Models;
 using DarenTechs.Web.Models.AccountViewModels;
 using DarenTechs.Web.Services;
 using DarenTechs.Data.Identity;
+using Microsoft.AspNetCore.Identity;
 
 namespace DarenTechs.Web.Controllers
 {

@@ -1,4 +1,4 @@
-@using DarenTechs.UI.ViewModels
+@using DarenTechs.Blog.ViewModels
 @using System.Globalization
 @model BlogViewModel
 @{
@@ -28,12 +28,12 @@
             </div>
             <div class="collapse multi-collapse" id="CommentsCollapseMain">
                 <div class="card-body h-100 p-0 m-0 border-0">
-                    @Html.Partial("_Comments", Model)
+                    @Html.PartialAsync("_Comments", Model)
                 </div>
             </div>
             <div class="collapse multi-collapse" id="CommentsCollapseAdd">
                 <div class="card-body h-100 p-0 m-0 border-0">
-                    @Html.Partial("_CommentsAdd", new BlogCommentViewModel { PostId = Model.Id})
+                    @Html.PartialAsync("_CommentsAdd", new BlogCommentViewModel { PostId = Model.Id})
                 </div>
             </div>
         </div>

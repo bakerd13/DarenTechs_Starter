@@ -1,10 +1,11 @@
-﻿using DarenTechs.Data.Entities.Blog;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
+using DarenTechs.Data.Entities.Blog;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
 
 namespace DarenTechs.Data.Data
 {
@@ -16,7 +17,7 @@ namespace DarenTechs.Data.Data
 
             context.Database.EnsureCreated();
 
-            var env = serviceProvider.GetRequiredService<IHostingEnvironment>();
+            var env = serviceProvider.GetRequiredService<IHostEnvironment>();
 
             if (env.IsDevelopment())
             {

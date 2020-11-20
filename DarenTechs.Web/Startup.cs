@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +13,9 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.AspNetCore.Mvc.Razor;
 using DarenTechs.UI.Components.Modal;
 using DarenTechs.Data.Interfaces;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 
 namespace DarenTechs.Web
 {
@@ -34,7 +35,7 @@ namespace DarenTechs.Web
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddReact();
 
-            services.AddDbContext<DarenTechsIdentityContext>(options => 
+            services.AddDbContext<DarenTechsIdentityContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DarenTechsConnection"),
                 x => x.MigrationsAssembly("DarenTechs.Data")));
 
@@ -63,21 +64,20 @@ namespace DarenTechs.Web
             var uiProvider = new EmbeddedFileProvider(assemblyBlog, "DarenTechs.Blog");
 
             //Add the file provider to the Razor view engine
-            services.Configure<RazorViewEngineOptions>(options =>
-            {
-                options.FileProviders.Add(uiProvider);
-            });
+            //services.Configure<RazorViewEngineOptions>(options =>
+            //{
+            //    options.FileProviders.Add(uiProvider);
+            //});
 
             services.AddMvc(config => config.ModelBinderProviders.Insert(0, new BootstrapModalBinderProvider()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -93,11 +93,11 @@ namespace DarenTechs.Web
 
             app.UseAuthentication();
 
-            app.UseMvc(routes =>
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

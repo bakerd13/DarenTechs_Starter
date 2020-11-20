@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<UserListViewModel>
-@using DarenTechs.Web.Models
+@using DarenTechs.UI.Components.Modal
 
 <div class="top-buffer"></div>
 <div class="panel panel-primary">
@@ -41,8 +41,8 @@
     </div>
 </div>
 
-@Html.Partial("_Modal", new BootstrapModel { Id = "modal-action-user", AreaLabeledId = "modal-action-user-label", Size = ModalSize.Medium })
-@Html.Partial("_Modal", new BootstrapModel { Id = "modal-action-delete-user-role", AreaLabeledId = "#modal-action-delete-user-roleid", Size = ModalSize.Medium })
+@Html.PartialAsync("_Modal", new BootstrapModal { Id = "modal-action-user", AreaLabeledId = "modal-action-user-label", Size = ModalSize.Medium })
+@Html.PartialAsync("_Modal", new BootstrapModal { Id = "modal-action-delete-user-role", AreaLabeledId = "#modal-action-delete-user-roleid", Size = ModalSize.Medium })
 
 @section scripts
 {

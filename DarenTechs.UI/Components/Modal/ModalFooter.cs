@@ -3,6 +3,9 @@ namespace DarenTechs.UI.Components.Modal
     public class ModalFooter
     {
         public string SaveButtonText { get; set; } = "Save";
+
+        public string SubmitButtonText { get; set; } = "Submit";
+
         public string CancelButtonText { get; set; } = "Cancel";
         public string SaveButtonID { get; set; } = "footer-btn-save";
 

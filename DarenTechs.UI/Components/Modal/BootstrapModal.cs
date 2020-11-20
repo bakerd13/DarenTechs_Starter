@@ -11,6 +11,10 @@ namespace DarenTechs.UI.Components.Modal
 
         public string SelectText { get; set; }
 
+        public string AreaLabeledId { get; set; }
+
+        public ModalSize Size { get; set; }
+
         public ModalFooter Footer { get; set; }
     }
 }

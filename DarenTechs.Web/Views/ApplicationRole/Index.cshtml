@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<ApplicationRoleListViewModel>
-@using DarenTechs.Web.Models
+@using DarenTechs.UI.Components.Modal
 
 <div class="top-buffer"></div>
 <div class="panel panel-primary">
@@ -44,9 +44,9 @@
     </div>
 </div>
 
-@Html.Partial("_Modal", new BootstrapModel { Id = "modal-action-application-role", AreaLabeledId = "modal-action-application-role-label", Size = ModalSize.Medium })
+@Html.PartialAsync("_Modal", new BootstrapModal { Id = "modal-action-application-role", AreaLabeledId = "modal-action-application-role-label", Size = ModalSize.Medium })
 
-@section scripts
+    @section scripts
     {
-    <script src="~/js/application-role-index.js" asp-append-version="true"></script>
-}
+        <script src="~/js/application-role-index.js" asp-append-version="true"></script>
+    }
